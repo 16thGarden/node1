@@ -53,7 +53,7 @@ var genres = [
     "Film-Noir"
 ]
 
-var site = 'Site 1'
+var site = process.argv[2]
 
 app.get("/", function(req, res) {
 res.render("home", {
