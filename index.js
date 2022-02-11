@@ -53,32 +53,39 @@ var genres = [
     "Film-Noir"
 ]
 
+var site = 'Site 1'
+
 app.get("/", function(req, res) {
 res.render("home", {
-    title: "home",
+    site: site,
+    title: site + " | home",
 });
 })
 app.get("/search", function(req, res) {
     res.render("search", {
-        title: "search",
+        site: site,
+        title: site + " | search",
         genres: genres,
     })
 })
 app.get("/add", function(req, res) {
     res.render("add", {
-        title: "add",
+        site: site,
+        title: site + " | add",
         genres: genres,
     })
 })
 app.get("/update", function(req, res) {
     res.render("update", {
-        title: "update",
+        site: site,
+        title: site + " | update",
         genres: genres,
     })
 })
 app.get("/delete", function(req, res) {
     res.render("delete", {
-        title: "delete",
+        site: site,
+        title: site + " | delete",
     })
 })
 
