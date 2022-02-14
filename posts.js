@@ -43,8 +43,20 @@ posts = {
         })
     },
     update: function(req, res) {
-        
-        query.update(req.body).then(result => {
+        var id = req.body.id
+        var name = req.body.name
+        var year = req.body.year
+        var genre = req.body.genre
+        var director_firstname = req.body.director_firstname
+        var director_lastname = req.body.director_lastname
+
+        var oldyear = req.body.oldyear
+
+        let qUpdate = `UPDATE ${tablename} SET name=\"${name}\", year=${year}, genre=\"${genre}\", director_firstname=\"${director_firstname}\", director_lastname=\"${director_lastname}\" WHERE id=${id};`
+        let qDelete = `DELETE FROM ${tablename} WHERE id=${id};`
+        let qInsert = `INSERT INTO ${tablename} VALUES (${id}, \"${name}\", ${year}, \"${genre}\", \"${director_firstname}\", \"${director_lastname}\");`
+
+        query.update(qUpdate, qDelete, qInsert, oldyear, year).then(result => {
             res.send(result)
         })
     }, 

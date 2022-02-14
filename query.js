@@ -315,21 +315,8 @@ let query = {
             })
         })
     },
-    update: (details) => {
-        return new Promise((resolve, reject) => {
-            var id = details.id
-            var name = details.name
-            var year = details.year
-            var genre = details.genre
-            var director_firstname = details.director_firstname
-            var director_lastname = details.director_lastname
-
-            let qUpdate = `UPDATE ${tablename} SET name=\"${name}\", year=${year}, genre=\"${genre}\", director_firstname=\"${director_firstname}\", director_lastname=\"${director_lastname}\" WHERE id=${id};`
-            let qDelete = `DELETE FROM ${tablename} WHERE id=${id};`
-            let qInsert = `INSERT INTO ${tablename} VALUES (${id}, \"${name}\", ${year}, \"${genre}\", \"${director_firstname}\", \"${director_lastname}\");`
-            
-            var oldyear = details.oldyear
-            
+    update: (qUpdate, qDelete, qInsert, oldyear, year) => {
+        return new Promise((resolve, reject) => {            
             node1.query(qUpdate, (err, result) => {
                 if (err) {
                     addToQueue(1, qUpdate)
@@ -462,8 +449,8 @@ let queryasync = {
     add: async (q, year) => {
         return await query.add(q, year)
     },
-    update: async (details) => {
-        return await query.update(q, year)
+    update: async (qUpdate, qDelete, qInsert, oldyear, year) => {
+        return await query.update(qUpdate, qDelete, qInsert, oldyear, year)
     },
     delete: async (q, year) => {
         return await query.delete(q, year)

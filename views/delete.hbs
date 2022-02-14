@@ -21,7 +21,6 @@
             $.post("/idlookup", {
                 id: id
             }, function(data) {
-                console.log(data)
                 if (data.error) {
                     $("#warning").html("database error");
                     $("#delete").val("Delete");
