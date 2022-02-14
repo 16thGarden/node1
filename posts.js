@@ -45,13 +45,13 @@ posts = {
     update: function(req, res) {
         var id = req.body.id
         var name = req.body.name
+        var oldyear = req.body.oldyear
         var year = req.body.year
         var genre = req.body.genre
         var director_firstname = req.body.director_firstname
         var director_lastname = req.body.director_lastname
-        let q = "UPDATE " + tablename + " SET name=\"" + name + "\", year=" + year + ", genre=\"" + genre + "\", director_firstname=\"" + director_firstname + "\", director_lastname=\"" + director_lastname + "\" WHERE id=" + id + ";"
         
-        query.update(q, req.body.year).then(result => {
+        query.update(id, name, oldyear, year, genre, director_firstname, director_lastname).then(result => {
             res.send(result)
         })
     }, 

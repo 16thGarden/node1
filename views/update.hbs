@@ -165,9 +165,10 @@
     $("#update").click(function() {
         $("#warning2").html("")
         $("#update").val("Updating...")
-        
+
         var id = parseInt($("#oldid").html(), 10)
         var name = $("#newname").val()
+        var oldyear = $("#oldyear").val()
         var year = $("#newyear").val()
         var genre = $("#newgenre").val()
         var director_firstname = $("#newdirectorfirstname").val()
@@ -185,6 +186,7 @@
                 $.post("/update", {
                     id: id,
                     name: name,
+                    oldyear: oldyear,
                     year: year,
                     genre: genre,
                     director_firstname: director_firstname,
