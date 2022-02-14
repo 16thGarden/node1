@@ -315,12 +315,24 @@ let query = {
             })
         })
     },
-    update: (id, name, oldyear, year, genre, director_firstname, director_lastname) => {
+    update: (details) => {
         return new Promise((resolve, reject) => {
+            console.log(details)
+            var id = details.id
+            var name = details.name
+            var year = details.year
+            var genre = details.genre
+            var director_firstname = details.director_firstname
+            var director_lastname = details.director_lastname
+
             let qUpdate = `UPDATE ${tablename} SET name=\"${name}\", year=${year}, genre=\"${genre}\", director_firstname=\"${director_firstname}\", director_lastname=\"${director_lastname}\" WHERE id=${id};`
             let qDelete = `DELETE FROM ${tablename} WHERE id=${id};`
             let qInsert = `INSERT INTO ${tablename} VALUES (${id}, \"${name}\", ${year}, \"${genre}\", \"${director_firstname}\", \"${director_lastname}\");`
             
+            var oldyear = details.oldyear
+            console.log(qUpdate)
+            console.log(qDelete)
+            console.log(qInsert)
             node1.query(qUpdate, (err, result) => {
                 if (err) {
                     addToQueue(1, qUpdate)

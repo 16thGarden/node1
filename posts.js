@@ -43,15 +43,8 @@ posts = {
         })
     },
     update: function(req, res) {
-        var id = req.body.id
-        var name = req.body.name
-        var oldyear = req.body.oldyear
-        var year = req.body.year
-        var genre = req.body.genre
-        var director_firstname = req.body.director_firstname
-        var director_lastname = req.body.director_lastname
         
-        query.update(id, name, oldyear, year, genre, director_firstname, director_lastname).then(result => {
+        query.update(req.body).then(result => {
             res.send(result)
         })
     }, 

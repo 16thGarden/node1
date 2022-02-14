@@ -168,7 +168,7 @@
 
         var id = parseInt($("#oldid").html(), 10)
         var name = $("#newname").val()
-        var oldyear = $("#oldyear").val()
+        var oldyear = $("#oldyear").html()
         var year = $("#newyear").val()
         var genre = $("#newgenre").val()
         var director_firstname = $("#newdirectorfirstname").val()
@@ -183,6 +183,7 @@
         } else {
             if (isInt(year)) {
                 year = parseInt(year, 10);
+                oldyear = parseInt(oldyear, 10);
                 $.post("/update", {
                     id: id,
                     name: name,
