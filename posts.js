@@ -50,9 +50,10 @@ posts = {
     }, 
     delete: function(req, res) {
         var id = req.body.id
+        var year = req.body.year
         let q = "DELETE FROM " + tablename + " WHERE id=" + id + ";"
-        
-        query.update(q).then(result => {
+    
+        query.delete(q, year).then(result => {
             res.send(result)
         })
     },

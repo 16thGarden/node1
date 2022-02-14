@@ -21,6 +21,7 @@
             $.post("/idlookup", {
                 id: id
             }, function(data) {
+                console.log(data)
                 if (data.error) {
                     $("#warning").html("database error");
                     $("#delete").val("Delete");
@@ -30,7 +31,8 @@
                 result = data.result
                 if (result.length == 1) {
                     $.post("/delete", {
-                        id: id
+                        id: id,
+                        year: result[0].year
                     }, function(data) {
                         if (data.success) {
                             $("#warning").html("Successfully deleted!")
